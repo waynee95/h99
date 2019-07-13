@@ -1,4 +1,5 @@
 import Data.List (group)
+import System.Random (randomRIO)
 
 -- Problem 01
 myLast :: [a] -> a
@@ -94,9 +95,6 @@ repli xs n = go xs n
       | otherwise = go xs n
 
 -- TODO: Problem 16
-dropEvery :: [a] -> Int -> [a]
-dropEvery xs n = undefined
-
 -- Problem 17
 split :: [a] -> Int -> ([a], [a])
 split xs n = (take n xs, drop n xs)
@@ -122,3 +120,48 @@ removeAt k = go (k - 1) []
   where
     go 0 left (x:right) = (x, left ++ right)
     go n left (x:right) = go (n - 1) (left ++ [x]) right
+
+-- Problem 21
+insertAt :: a -> [a] -> Int -> [a]
+insertAt x xs k =
+    let (left,right) = splitAt (k - 1) xs
+    in left ++ [x] ++ right
+
+-- Problem 22
+range :: Int -> Int -> [Int]
+range n k = [n .. k]
+
+-- TODO: Problem 23
+-- TODO: Problem 24
+-- TODO: Problem 25
+-- TODO: Problem 26
+-- TODO: Problem 27
+-- TODO: Problem 28
+-- Problem 31
+isPrime :: Integral a => a -> Bool
+isPrime n = length (divisors n) == 1
+  where
+    divisors n = [x | x <- [1 .. n `div` 2], n `rem` x == 0]
+
+-- Problem 32
+myGCD :: Int -> Int -> Int
+myGCD a 0 = abs a
+myGCD a b = myGCD b (a `mod` b)
+
+-- Problem 33
+coprime :: Int -> Int -> Bool
+coprime a b = myGCD a b == 1
+
+-- Problem 34
+totient :: Int -> Int
+totient 1 = 1
+totient n = length $ filter (coprime n) [1 .. n - 1]
+
+-- TODO: Problem 35
+-- TODO: Problem 36
+-- TODO: Problem 37
+-- TODO: Problem 38
+primesR :: Int -> Int -> [Int]
+primesR low hi = filter isPrime [low .. hi]
+-- TODO: Problem 40
+-- TODO: Problem 41
