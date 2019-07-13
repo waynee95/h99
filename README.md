@@ -1,2 +1,9 @@
 # h99
-my solutions for Haskell 99 problems
+
+> 99 Problems from http://www.haskell.org/haskellwiki/H-99:_Ninety-Nine_Haskell_Problems
+
+Problems finished: 10
+
+## License
+
+[MIT](LICENSE)
