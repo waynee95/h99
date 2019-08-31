@@ -94,7 +94,16 @@ repli xs n = go xs n
       | cur > 0 = x : go all (cur - 1)
       | otherwise = go xs n
 
--- TODO: Problem 16
+-- Problem 16
+dropEvery :: [a] -> Int -> [a]
+dropEvery [] _ = []
+dropEvery xs n = go xs n 1
+  where
+    go [] _ _ = []
+    go (x:xs) n k
+      | n == k = go xs n 1
+      | otherwise = x : go xs n (k + 1)
+
 -- Problem 17
 split :: [a] -> Int -> ([a], [a])
 split xs n = (take n xs, drop n xs)
