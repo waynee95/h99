@@ -1,5 +1,6 @@
 import Data.List (group)
-import System.Random (randomRIO)
+import System.Random (randomR,getStdRandom)
+import Control.Monad (replicateM)
 
 -- Problem 01
 myLast :: [a] -> a
@@ -140,7 +141,14 @@ insertAt x xs k =
 range :: Int -> Int -> [Int]
 range n k = [n .. k]
 
--- TODO: Problem 23
+-- Problem 23
+rndSelect :: [a] -> Int -> IO [a]
+rndSelect [] _ = return []
+rndSelect _ 0 = return []
+rndSelect xs n = do
+    is <- replicateM n $ getStdRandom $ randomR (0, length xs - 1)
+    return [xs !! i | i <- is]
+
 -- TODO: Problem 24
 -- TODO: Problem 25
 -- TODO: Problem 26
